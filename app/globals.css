@@ -1,0 +1,368 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 216 20% 95%;
+    --foreground: 215 25% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 15%;
+    --primary: 217 71% 45%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 214 32% 91%;
+    --secondary-foreground: 215 25% 20%;
+    --muted: 216 18% 92%;
+    --muted-foreground: 215 15% 47%;
+    --accent: 205 80% 50%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 214 20% 85%;
+    --input: 214 20% 85%;
+    --ring: 217 71% 45%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* ===== CUSTOM STYLES ===== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+}
+
+/* --- Nav --- */
+.site-nav {
+  @apply fixed top-0 left-0 right-0 z-50;
+  @apply bg-card/80 backdrop-blur-md border-b border-border;
+}
+.site-nav-inner {
+  @apply max-w-6xl mx-auto px-6 py-4 flex items-center justify-between;
+}
+.site-nav .logo {
+  @apply text-xl font-bold tracking-tight;
+  color: hsl(var(--primary));
+}
+.site-nav .logo span {
+  @apply font-light;
+  color: hsl(var(--muted-foreground));
+}
+.nav-links {
+  @apply hidden md:flex items-center gap-8;
+}
+.nav-links a {
+  @apply text-sm font-medium transition-colors duration-200;
+  color: hsl(var(--muted-foreground));
+}
+.nav-links a:hover {
+  color: hsl(var(--primary));
+}
+
+/* --- Hero --- */
+.hero {
+  @apply pt-32 pb-20 px-6 text-center;
+}
+.hero-badge {
+  @apply inline-block px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide uppercase mb-6;
+  background: hsl(var(--secondary));
+  color: hsl(var(--primary));
+}
+.hero h1 {
+  @apply text-4xl md:text-6xl font-extrabold tracking-tight mb-6;
+  color: hsl(var(--foreground));
+}
+.hero h1 em {
+  @apply not-italic;
+  color: hsl(var(--primary));
+}
+.hero p {
+  @apply max-w-2xl mx-auto text-lg md:text-xl leading-relaxed mb-10;
+  color: hsl(var(--muted-foreground));
+}
+.hero-buttons {
+  @apply flex flex-col sm:flex-row items-center justify-center gap-4;
+}
+.btn-primary {
+  @apply px-8 py-3 rounded-lg text-sm font-semibold transition-all duration-200;
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+}
+.btn-primary:hover {
+  @apply opacity-90 shadow-lg;
+}
+.btn-secondary {
+  @apply px-8 py-3 rounded-lg text-sm font-semibold border transition-all duration-200;
+  border-color: hsl(var(--border));
+  color: hsl(var(--foreground));
+  background: hsl(var(--card));
+}
+.btn-secondary:hover {
+  background: hsl(var(--secondary));
+}
+
+/* --- Section --- */
+.section {
+  @apply py-20 px-6;
+}
+.section-inner {
+  @apply max-w-6xl mx-auto;
+}
+.section-title {
+  @apply text-3xl md:text-4xl font-bold text-center mb-4;
+  color: hsl(var(--foreground));
+}
+.section-subtitle {
+  @apply text-center max-w-2xl mx-auto mb-14;
+  color: hsl(var(--muted-foreground));
+}
+.section-alt {
+  background: hsl(var(--card));
+}
+
+/* --- Tool Cards --- */
+.tools-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+}
+.tool-card {
+  @apply rounded-xl p-6 border transition-all duration-300;
+  background: hsl(var(--card));
+  border-color: hsl(var(--border));
+}
+.tool-card:hover {
+  @apply shadow-lg -translate-y-1;
+  border-color: hsl(var(--primary));
+}
+.tool-icon {
+  @apply w-12 h-12 rounded-lg flex items-center justify-center mb-4 text-xl;
+  background: hsl(var(--secondary));
+}
+.tool-card h3 {
+  @apply text-lg font-bold mb-1;
+  color: hsl(var(--foreground));
+}
+.tool-card .tool-tag {
+  @apply text-xs font-medium mb-3 inline-block;
+  color: hsl(var(--primary));
+}
+.tool-card p {
+  @apply text-sm leading-relaxed;
+  color: hsl(var(--muted-foreground));
+}
+
+/* --- Features --- */
+.features-grid {
+  @apply grid grid-cols-1 md:grid-cols-3 gap-8;
+}
+.feature-item {
+  @apply text-center;
+}
+.feature-icon-wrap {
+  @apply w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4;
+  background: hsl(var(--secondary));
+  color: hsl(var(--primary));
+}
+.feature-item h3 {
+  @apply text-lg font-bold mb-2;
+  color: hsl(var(--foreground));
+}
+.feature-item p {
+  @apply text-sm leading-relaxed;
+  color: hsl(var(--muted-foreground));
+}
+
+/* --- Steps (2x2 grid, centered) --- */
+.steps-grid {
+  @apply max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6;
+}
+.step-card {
+  @apply rounded-xl p-6 border text-center flex flex-col items-center;
+  background: hsl(var(--background));
+  border-color: hsl(var(--border));
+}
+.step-number {
+  @apply w-11 h-11 rounded-full flex items-center justify-center text-sm font-bold mb-4;
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+}
+.step-card h3 {
+  @apply text-base font-bold mb-2;
+  color: hsl(var(--foreground));
+}
+.step-card p {
+  @apply text-sm leading-relaxed;
+  color: hsl(var(--muted-foreground));
+}
+.step-code {
+  @apply mt-3 px-4 py-2 rounded-lg text-xs font-mono w-full;
+  background: hsl(var(--foreground));
+  color: hsl(var(--primary-foreground));
+}
+
+/* --- Architecture --- */
+.arch-diagram {
+  @apply max-w-3xl mx-auto rounded-xl p-8 border text-center;
+  background: hsl(var(--card));
+  border-color: hsl(var(--border));
+}
+.arch-row {
+  @apply flex flex-wrap items-center justify-center gap-3 mb-4;
+}
+.arch-box {
+  @apply px-4 py-2 rounded-lg text-sm font-medium;
+  background: hsl(var(--secondary));
+  color: hsl(var(--secondary-foreground));
+}
+.arch-box.docker {
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+}
+.arch-arrow {
+  @apply text-2xl;
+  color: hsl(var(--muted-foreground));
+}
+
+/* --- Footer --- */
+.site-footer {
+  @apply py-10 px-6 text-center border-t;
+  border-color: hsl(var(--border));
+}
+.site-footer p {
+  @apply text-sm;
+  color: hsl(var(--muted-foreground));
+}
+.site-footer a {
+  color: hsl(var(--primary));
+  @apply font-medium;
+}
+
+/* --- Mobile menu (CSS-only via details/summary) --- */
+.mobile-menu-details {
+  @apply md:hidden;
+}
+.mobile-menu-btn {
+  @apply flex flex-col gap-1.5 cursor-pointer p-1 list-none;
+}
+.mobile-menu-btn::-webkit-details-marker {
+  display: none;
+}
+.mobile-menu-btn span {
+  @apply w-6 h-0.5 block rounded;
+  background: hsl(var(--foreground));
+}
+.mobile-menu {
+  @apply absolute left-0 right-0 top-full px-6 pb-4 pt-2 flex flex-col gap-3 border-b;
+  background: hsl(var(--card));
+  border-color: hsl(var(--border));
+}
+.mobile-menu a {
+  @apply text-sm font-medium;
+  color: hsl(var(--muted-foreground));
+}
+
+/* --- Arch extras --- */
+.arch-label {
+  @apply text-sm font-semibold mb-6;
+  color: hsl(var(--muted-foreground));
+}
+.arch-note {
+  @apply text-xs mt-4;
+  color: hsl(var(--muted-foreground));
+}
+.footer-sub {
+  @apply mt-2;
+}
+
+/* --- IP help link --- */
+.ip-help-link {
+  @apply text-xs mt-3 underline transition-colors duration-200;
+  color: hsl(var(--primary));
+}
+.ip-help-link:hover {
+  color: hsl(var(--accent));
+}
+
+/* --- Tutorial page --- */
+.tutorial-page {
+  @apply max-w-3xl mx-auto px-6 py-16;
+}
+.tutorial-back,
+.tutorial-back-bottom {
+  @apply inline-block text-sm font-medium mb-8 transition-colors duration-200;
+  color: hsl(var(--primary));
+}
+.tutorial-back-bottom {
+  @apply mt-10 mb-0;
+}
+.tutorial-back:hover,
+.tutorial-back-bottom:hover {
+  color: hsl(var(--accent));
+}
+.tutorial-page h1 {
+  @apply text-3xl md:text-4xl font-bold mb-4;
+  color: hsl(var(--foreground));
+}
+.tutorial-intro {
+  @apply text-base leading-relaxed mb-10;
+  color: hsl(var(--muted-foreground));
+}
+.tutorial-steps {
+  @apply flex flex-col gap-8;
+}
+.tutorial-step {
+  @apply flex gap-5 items-start rounded-xl p-6 border;
+  background: hsl(var(--card));
+  border-color: hsl(var(--border));
+}
+.tutorial-step-num {
+  @apply w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0;
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+}
+.tutorial-step h2 {
+  @apply text-lg font-bold mb-2;
+  color: hsl(var(--foreground));
+}
+.tutorial-step p {
+  @apply text-sm leading-relaxed;
+  color: hsl(var(--muted-foreground));
+}
+.tutorial-code {
+  @apply mt-3 px-4 py-2.5 rounded-lg text-sm font-mono;
+  background: hsl(var(--foreground));
+  color: hsl(var(--primary-foreground));
+}
+.tutorial-note {
+  @apply mt-3 px-4 py-3 rounded-lg text-xs leading-relaxed border-l-4;
+  background: hsl(var(--secondary));
+  border-color: hsl(var(--primary));
+  color: hsl(var(--secondary-foreground));
+}
+.tutorial-summary {
+  @apply mt-12 rounded-xl p-6 border;
+  background: hsl(var(--card));
+  border-color: hsl(var(--border));
+}
+.tutorial-summary h2 {
+  @apply text-lg font-bold mb-4;
+  color: hsl(var(--foreground));
+}
+.tutorial-summary ol {
+  @apply list-decimal list-inside flex flex-col gap-2 text-sm;
+  color: hsl(var(--muted-foreground));
+}
