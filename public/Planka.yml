@@ -1,0 +1,33 @@
+services:
+  planka:
+    image: lscr.io/linuxserver/planka:latest
+    container_name: planka
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Madrid
+      - BASE_URL=http://localhost:3000
+      - DATABASE_URL=postgres://planka:planka_password@planka-db:5432/planka
+      - SECRET_KEY=a
+      - DEFAULT_ADMIN_EMAIL=a
+      - DEFAULT_ADMIN_PASSWORD=a
+      - DEFAULT_ADMIN_NAME=admin
+      - DEFAULT_ADMIN_USERNAME=a
+    volumes:
+      - ./config:/config
+    ports:
+      - 3000:1337
+    restart: unless-stopped
+    depends_on:
+      - planka-db
+
+  planka-db:
+    image: postgres:16
+    container_name: planka-db
+    environment:
+      - POSTGRES_DB=planka
+      - POSTGRES_USER=planka
+      - POSTGRES_PASSWORD=planka_password
+    volumes:
+      - ./db-data:/var/lib/postgresql/data
+    restart: unless-stopped
