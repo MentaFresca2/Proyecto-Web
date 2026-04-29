@@ -420,7 +420,7 @@ ${chosenApps.map((app) => `- ${app.name}: ${app.href}`).join("\n")}
             <div className="arch-stack">
               <div className="arch-stack-header">
                 <div>
-                  <div className="arch-stack-title">Contenedor Docker</div>
+                  <div className="arch-stack-title">Docker</div>
                   <div className="arch-stack-subtitle">Servicios desplegados en local</div>
                 </div>
                 <div className="arch-stack-badge">Docker Desktop</div>
@@ -436,7 +436,7 @@ ${chosenApps.map((app) => `- ${app.name}: ${app.href}`).join("\n")}
                     className="arch-app-card"
                   >
                     <div className="arch-app-top">
-                      <span className="arch-app-name">{app.name}</span>
+                      <span className="arch-app-name">Contenedor {app.name}</span>
                       <span className="arch-app-port">
                         Puerto {app.href.replace("http://localhost:", "")}
                       </span>
