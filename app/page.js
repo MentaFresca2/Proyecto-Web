@@ -62,7 +62,7 @@ export default function Page() {
       name: "Wiki.js",
       href: "http://localhost:3001",
       tag: "Documentación · Puerto 3001",
-      file: "/WikiJS.yml",
+      file: "/Wikijs.yml",
       zipPath: "WikiJS/docker-compose.yml",
       description:
         "Wiki moderna y potente para documentar procesos, manuales y conocimiento interno de la empresa.",
